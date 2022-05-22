@@ -10,7 +10,7 @@ import Register from './Pages/Login/Register';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App max-w-7xl mx-auto'>
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />

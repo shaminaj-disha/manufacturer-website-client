@@ -49,14 +49,10 @@ const Login = () => {
         // const email = emailRef.current.value;
         if (email) {
             await sendPasswordResetEmail(email); // reset password using react firebase hooks
-            toast.success('Sent email', {
-                position: "top-right"
-              }); // toast for reset 
+            toast.success('Password Reset Email Sent'); // toast for reset 
         }
         else {
-            toast.error('please enter your email address', {
-                position: "top-right"
-              }); // toast for when user don't put email in the input
+            toast.error('please enter your email address'); // toast for when user don't put email in the input
         }
     }
 

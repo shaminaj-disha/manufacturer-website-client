@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import google from '../../images/social/google.png'
+import { sendEmailVerification } from 'firebase/auth';
+import { toast } from 'react-toastify';
 const Register = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -34,11 +36,19 @@ const Register = () => {
         console.log(user);
     }
 
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+          .then(() => {
+            toast('Email Verification Sent');
+          })
+      }
+
     const onSubmit = async data => {
         // console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         console.log('Profile Updated');
+        verifyEmail();
         navigate(from, { replace: true });
     };
     return (

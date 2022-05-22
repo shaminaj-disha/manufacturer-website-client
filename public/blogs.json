@@ -1,0 +1,32 @@
+[
+  {
+    "id": "624c25b2990a7df785afe960",
+    "question": "How will you improve the performance of a React Application?\r\n",
+    "answer": "To optimize React rendering, we need to make sure that components receive only necessary props. It will let us control the CPU consumption and avoid over-rendering unnecessary features. The solution is to create a functional component that will collect all props and redistribute them to other components. Also, we need to avoid inline functions as much as possible. Immutability is the key to avoid unnecessary re-renders. We should always render hidden components like Modals and Dropdowns conditionally and call multiple APIs parallelly.\r\n"
+  },
+  {
+    "id": "624c25b2a5080bc66d44e10f",
+    "question": "What are the different ways to manage a state in a React application?\r\n",
+    "answer": "State stores a component’s dynamic data and determines the component’s behavior. The state helps in keeping the data of different components in sync since each state update will re-render all relevant components. It can also act as a medium to communicate between various components. Managing state is one of the hardest parts of any application. There are five ways of Application State in React: Communication State, Data State, Control State,Session State, Location State.\r\n"
+  },
+  {
+    "id": "624c25b2ed501db274e24947",
+    "question": "How does prototypical inheritance work?\r\n",
+    "answer": "prototypical inheritance refers to the ability to access object properties from another object which means that objects and methods can be shared, extended, and copied. We use a JavaScript prototype to add new properties and methods to an existing object constructor. We can then essentially tell our JS code to inherit properties from a prototype. Prototypical inheritance allows us to reuse the properties or methods from one JavaScript object to another through a reference pointer function.\r\n"
+  },
+  {
+    "id": "624c25b2ed501db274e24384",
+    "question": "Why you do not set the state directly in React. For example, if you have `const [products, setProducts]` = `useState([])`. Why you do not set `products = [...]` instead, you use the `setProducts`\r\n",
+    "answer": "If we update the state directly, calling the setState() afterward may just replace the update we made. When we directly update the state, it does not change this.state immediately. Instead, it creates a pending state transition, and accessing it after calling this method will only return the present value. We will lose control of the state across all components.\r\n"
+  },
+  {
+    "id": "624c25b2ed501db274e23972",
+    "question": "You have an array of products. Each product has a name, price, description, etc. How will you implement a search to find products by name?\r\n",
+    "answer": "\r\n"
+  },
+  {
+    "id": "624c25b2ed501db274e29386",
+    "question": "What is a unit test? Why should write unit tests?\r\n",
+    "answer": "A unit test is a way of testing a unit - the smallest piece of code that can be logically isolated in a system. In most programming languages, that is a function, a subroutine, a method or property. The main objective of unit testing is to isolate written code to test and determine if it works as intended. If it's done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages. Unit testing ensures that all code meets quality standards before it's deployed. This ensures a reliable engineering environment where quality is paramount. Over the course of the product development life cycle, unit testing saves time and money, and helps developers write better code, more efficiently.\r\n"
+  }
+]

@@ -19,10 +19,10 @@ const Header = () => {
             <li><Link to="/blogs">Blogs</Link></li>
             <li><Link to="/portfolio">My Portfolio</Link></li>
             <li>{user && <Link to="/dashboard">Dashboard</Link>}</li>
-            <li>{user ? <button onClick={logout} className='btn btn-ghost'>Sign Out</button> : <Link to="/login">Login</Link>}</li>
+            <li>{user ? <button onClick={logout} className='btn btn-ghost normal-case'>Log Out ({user?.displayName})</button> : <Link to="/login">Login</Link>}</li>
         </>
     return (
-        <div className="navbar bg-base-100 sticky">
+        <div className="navbar bg-base-100 bg-gradient-to-r from-secondary to-primary">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -34,7 +34,7 @@ const Header = () => {
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Tools Manufacturer</Link>
             </div>
-            <div className="navbar-end hidden lg:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>

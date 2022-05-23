@@ -38,7 +38,6 @@ const Purchase = () => {
     }
 
     const onSubmit = data => {
-        console.log(data);
         const quantity = data.quantity;
 
         const purchase = {
@@ -81,17 +80,6 @@ const Purchase = () => {
                 <p>Per Unit Price: {item?.unitPrice}</p>
                 <p>{item?.description}</p>
                 <h2 className="card-title justify-center my-5">Purchase Details</h2>
-                {/* <label className="label">
-                    <span className="label-text">Purchase Quantity</span>
-                </label>
-                <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
-                    <input onChange={minQuantity} type="number" name="selectedQuantity" required placeholder={item?.minimumQuantity || ''} className="input input-bordered w-full max-w-xs" />
-                    <input type="text" name="name" disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
-                    <input type="email" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
-                    <input type="number" name="phone" required placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
-                    <input type="text" name="address" required placeholder="Your Address" className="input input-bordered w-full max-w-xs" />
-                    <input type="submit" value="Purchase" className="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary w-full max-w-xs" />
-                </form> */}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

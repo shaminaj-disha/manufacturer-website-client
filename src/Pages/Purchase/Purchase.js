@@ -53,7 +53,7 @@ const Purchase = () => {
             address: data.address
         }
 
-        fetch('https://secret-dusk-46242.herokuapp.com/booking', {
+        fetch('http://localhost:5000/purchase', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -10,6 +10,9 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Blogs from './Pages/Blogs/Blogs';
 import { useEffect, useState } from 'react';
+import ShowTools from './Pages/Tools/ShowTools';
+import Portfolio from './Pages/Portfolio/Portfolio';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -19,25 +22,32 @@ function App() {
       .then(res => res.json())
       .then(data => setBlogs(data));
   }, []);
+
   return (
     <div className='App'>
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
-        <Route path="/blogs" element={blogs.map(blog =>
+        <Route path="tools" element={<ShowTools></ShowTools>} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="blogs" element={blogs.map(blog =>
           <Blogs
             key={blog._id}
             blog={blog}>
-          </Blogs>)}>
-        </Route>
-          <Route path="dashboard" element={
-            <RequireAuth>
-              <Dashboard />
-            </RequireAuth>
-          } />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          </Blogs>)} />
+        <Route path="dashboard" element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        } />
+        <Route path="purchase/:toolId" element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        } />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
       <ToastContainer />
     </div>

@@ -9,7 +9,7 @@ const Banner = () => {
                 <img src={tools} className="max-w-sm" alt='' />
                 <div className='pr-12'>
                     <h1 className="text-5xl font-bold">Find Your Tools Here</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">Looking for some amazing tools? Here we have a huge collection of them. Every collection is brand new and comes with a reasonable price. So, don't worry and grab the tools you need right away.</p>
                     <PrimaryButton>Get Started</PrimaryButton>
                 </div>
             </div>

@@ -1,0 +1,83 @@
+[
+  {
+    "_id": "628a851f8c216ee0cee07b1c",
+    "img": "https://img.freepik.com/free-vector/realistic-hammer-vector-ill_121111-706.jpg?w=740",
+    "toolName": "Hammer",
+    "unitPrice": 395,
+    "minimumQuantity": 3,
+    "availableQuantity": 196,
+    "description": "It's a nice Hammer.\r\n"
+  },
+  {
+    "_id": "628a851f87764f219dc56d74",
+    "img": "https://img.freepik.com/free-photo/screwdriver-isolated-white-background_167862-1386.jpg?w=360",
+    "toolName": "Screw Driver",
+    "unitPrice": 100,
+    "minimumQuantity": 6,
+    "availableQuantity": 101,
+    "description": "It's a nice Screw Driver.\r\n"
+  },
+  {
+    "_id": "628a851f77ef9a32a8871k38",
+    "img": "https://img.freepik.com/free-vector/vector-big-shovels-with-wooden-handle-front-view-isolated-white-background_1284-46511.jpg?t=st=1653246231~exp=1653246831~hmac=6c7ee37f34451c65901a1f604caa192f28beae52449fe33c07a3f5449efbf0a7&w=360",
+    "toolName": "Shovel",
+    "unitPrice": 281,
+    "minimumQuantity": 2,
+    "availableQuantity": 168,
+    "description": "It's a nice Shovel.\r\n"
+  },
+  {
+    "_id": "628a851fafe6def401fbc3d7",
+    "img": "https://img.freepik.com/free-vector/screwdrivers-realistic-set-with-redecoration-repait-symbols-isolated-vector-illustration_1284-70019.jpg?t=st=1653245583~exp=1653246183~hmac=86a36afbbbf5f87fb385bf9f93c5b253c383692b6814aad88a566e4cee200861&w=740",
+    "toolName": "Screw Driver Set",
+    "unitPrice": 350,
+    "minimumQuantity": 10,
+    "availableQuantity": 151,
+    "description": "It's a nice Screw Driver set.\r\n"
+  },
+  {
+    "_id": "628a851fb46257024e7361a0",
+    "img": "https://img.freepik.com/free-vector/realistic-pistons_1441-2751.jpg?t=st=1653245876~exp=1653246476~hmac=9d0ddd1b7ba645d38661e327de7745bad7e21b6661f91cc8caa92992ada23143&w=740",
+    "toolName": "wrench Set",
+    "unitPrice": 329,
+    "minimumQuantity": 7,
+    "availableQuantity": 186,
+    "description": "It's a nice Wrench set.\r\n"
+  },
+  {
+    "_id": "628a851f012cadb3926e3daa",
+    "img": "https://img.freepik.com/free-photo/pliers-isolated-white-background-close-up_185193-71608.jpg?t=st=1653245974~exp=1653246574~hmac=6c2f143ba257aacf3ba9a594403f6f8264f562051cad560b8bd54ab562ef3b1c&w=740",
+    "toolName": "Plier",
+    "unitPrice": 397,
+    "minimumQuantity": 6,
+    "availableQuantity": 165,
+    "description": "It's a nice Plier.\r\n"
+  },
+  {
+    "_id": "628a851f77ef9a32a88712e8",
+    "img": "https://img.freepik.com/free-photo/modern-healthy-life-composition-with-measure-tape_23-2147914113.jpg?w=740",
+    "toolName": "Measuring Tape",
+    "unitPrice": 281,
+    "minimumQuantity": 2,
+    "availableQuantity": 168,
+    "description": "It's a nice Measuring Tape.\r\n"
+  },
+  {
+    "_id": "628a851f810950f6e5f3ab94",
+    "img": "https://img.freepik.com/free-psd/cordless-electric-drill-machine-branding-mockup_439185-9819.jpg?t=st=1653245727~exp=1653246327~hmac=b2cdfd5b6de830769682af03d213c669f144165e1470a3daea278d21939a70f3&w=740",
+    "toolName": "Electric Drill Machine",
+    "unitPrice": 107,
+    "minimumQuantity": 2,
+    "availableQuantity": 159,
+    "description": "It's a nice Drill Machine.\r\n"
+  },
+  {
+    "_id": "628a851f77ef9a32a88714v9",
+    "img": "https://img.freepik.com/free-photo/hand-painting-wall-white_53876-125352.jpg?t=st=1653246410~exp=1653247010~hmac=66f8549d3bf3efecb6fb62035c17e2eec1c06063703a53816621b7f9ea0730db&w=740",
+    "toolName": "Paint Roller",
+    "unitPrice": 281,
+    "minimumQuantity": 2,
+    "availableQuantity": 168,
+    "description": "It's a nice Paint Roller.\r\n"
+  }
+]

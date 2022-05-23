@@ -44,8 +44,8 @@ const Purchase = () => {
             toolId: toolId,
             toolName: item?.toolName,
             unitPrice: item?.unitPrice,
-            quantity,
-            totalPrice: ((item?.unitPrice) * quantity),
+            quantity: quantity ? quantity : (item?.minimumQuantity),
+            totalPrice: ((item?.unitPrice) * (quantity ? quantity : (item?.minimumQuantity))),
             email: user?.email,
             name: user?.displayName,
             phone: data.phone,
@@ -74,23 +74,18 @@ const Purchase = () => {
         <div className="card lg:card-side bg-base-100 shadow-xl m-28">
             <figure><img className='p-5' src={item?.img} alt="Album" /></figure>
             <div className="card-body">
-                <h2 className="card-title justify-center mb-5">{item?.toolName}</h2>
+                <h2 className="card-title text-3xl font-bold justify-center mb-5">{item?.toolName}</h2>
                 <p>Available Quantity: {item?.availableQuantity}</p>
                 <p>Minimum Order Quantity: {item?.minimumQuantity}</p>
                 <p>Per Unit Price: {item?.unitPrice}</p>
                 <p>{item?.description}</p>
                 <h2 className="card-title justify-center my-5">Purchase Details</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Purchase Quantity</span>
                         </label>
-                        <input type="number" placeholder={item?.minimumQuantity} className="input input-bordered w-full max-w-xs"  {...register("quantity", {
-                            required: {
-                                value: true,
-                                message: 'Quantity is Required'
-                            }
-                        })} onKeyUp={() => {
+                        <input type="number" placeholder={item?.minimumQuantity} className="input input-bordered w-full max-w-xs"  {...register("quantity")} onKeyUp={() => {
                             const quantityValue = getValues("quantity"); handleQuantity(quantityValue);
                         }} />
                         <label className="label">

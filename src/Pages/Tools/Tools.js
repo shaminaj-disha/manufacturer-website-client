@@ -8,16 +8,16 @@ const Tools = ({tool}) => {
         navigate(`/purchase/${id}`)
     }
     return (
-        <div class="card card-compact lg:max-width-lg bg-base-100 shadow-xl">
+        <div className="card card-compact lg:max-width-lg bg-base-100 shadow-xl shadow-primary">
             <figure><img src={img} alt="ZSingle Tool" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">{toolName}</h2>
+            <div className="card-body">
+                <h2 className="card-title justify-center">{toolName}</h2>
                 <p>Minimum Order Quantity: {minimumQuantity}</p>
                 <p>Available Quantity: {availableQuantity}</p>
                 <p>price: {unitPrice}</p>
                 <p>{description}</p>
-                <div class="card-actions justify-end">
-                    <button onClick={() => handleOrder(_id)} class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Purchase</button>
+                <div className="card-actions justify-center">
+                    <button onClick={() => handleOrder(_id)} className="btn btn-primary w-full max-w-xs uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Purchase</button>
                 </div>
             </div>
         </div>

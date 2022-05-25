@@ -7,6 +7,7 @@ import Loading from '../Shared/Loading';
 import google from '../../images/social/google.png'
 import { sendEmailVerification } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
 const Register = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -16,7 +17,10 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || googleUser);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,8 +36,8 @@ const Register = () => {
         signInError = <p className='text-red-500'><small>{error?.message || googleError?.message || updateError?.message}</small></p>
     }
 
-    if (user || googleUser) {
-        console.log(user);
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     const verifyEmail = () => {
@@ -49,10 +53,9 @@ const Register = () => {
         await updateProfile({ displayName: data.name });
         console.log('Profile Updated');
         verifyEmail();
-        navigate(from, { replace: true });
     };
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-2xl font-bold text-center">Sign Up</h2>

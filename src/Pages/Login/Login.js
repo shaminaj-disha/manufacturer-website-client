@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import google from '../../images/social/google.png'
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -17,6 +18,8 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user || googleUser);
+
     const navigate = useNavigate();
     const location = useLocation();
     let from = location?.state?.from?.pathname || "/";
@@ -25,11 +28,10 @@ const Login = () => {
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     useEffect(() => {
-        if (user || googleUser) {
-            // console.log(user);
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, googleUser, from, navigate]);
+    }, [token, from, navigate]);
 
     if (loading || googleLoading || sending) {
         return <Loading></Loading>
@@ -57,7 +59,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-2xl font-bold text-center">Login</h2>
@@ -104,8 +106,9 @@ const Login = () => {
                         <input className='btn btn-primary w-full max-w-xs uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary' type="submit" value="Login" />
                     </form>
                     <p><small>New User? <Link className='text-primary' to="/register">Create New Account</Link></small></p>
-                    <p><small>Forgot Password? <button className='btn btn-link text-primary no-underline' onClick={ ()=>{
-                        const emailValue = getValues("email");resetPassword(emailValue);
+                    <p><small>Forgot Password? <button className='btn btn-link text-primary no-underline normal-case' onClick={ ()=>{
+                        const emailValue = getValues("email");
+                        resetPassword(emailValue);
                         }}>Reset Password</button></small></p>
                     <div className='divider'>OR</div>
                     <button onClick={() => signInWithGoogle()} className='btn btn-outline'><img style={{ width: '30px' }} src={google} alt="" /><span className='px-2'> Continue with Google</span></button>

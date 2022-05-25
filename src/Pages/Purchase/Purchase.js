@@ -1,12 +1,14 @@
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
-    const { register, formState: { errors }, handleSubmit, getValues } = useForm();
+    const { register, formState: { errors }, reset, handleSubmit, getValues } = useForm();
     const { toolId } = useParams();
     const [user] = useAuthState(auth);
     const [item, setItem] = useState({});
@@ -14,22 +16,38 @@ const Purchase = () => {
     const minQuantity = item?.minimumQuantity;
     const orderQuantity = min;
     const maxQuantity = item?.availableQuantity;
+    const navigate = useNavigate();
     let errorElement;
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${toolId}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setItem(data));
-    }, [toolId]);
+        const getTool = async () => {
+            const url = `http://localhost:5000/tools/${toolId}`;
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setItem(data);
+            }
+            catch (error) {
+                console.log(error.message);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+            }
+        }
+        getTool();
+    }, [toolId, navigate, user]);
 
     if (orderQuantity < minQuantity) {
         errorElement = <small className='label-text-alt text-red-500'>Order quantity must be more than {minQuantity}</small>
     }
-    else if (orderQuantity > maxQuantity){
+    else if (orderQuantity > maxQuantity) {
         errorElement = <small className='label-text-alt text-red-500'>Order quantity can not be more than {maxQuantity}</small>
     }
-    else{
+    else {
         errorElement = '';
     }
 
@@ -55,7 +73,8 @@ const Purchase = () => {
         fetch('http://localhost:5000/purchase', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(purchase)
         })
@@ -63,6 +82,7 @@ const Purchase = () => {
             .then(resultData => {
                 if (resultData.success) {
                     toast.success(`Purchase order for ${item?.toolName} is successful.`);
+                    reset();
                 }
                 else {
                     toast.error(`Purchase order for ${item?.toolName} is failed.`)

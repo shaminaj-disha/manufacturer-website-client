@@ -13,6 +13,11 @@ import { useEffect, useState } from 'react';
 import ShowTools from './Pages/Tools/ShowTools';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import Purchase from './Pages/Purchase/Purchase';
+import DashboardHome from './Pages/Dashboard/DashboardHome';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import MyReview from './Pages/Dashboard/MyReview';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -30,24 +35,26 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="tools" element={<ShowTools></ShowTools>} />
+        <Route path="purchase/:toolId" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="blogs" element={blogs.map(blog =>
           <Blogs
             key={blog._id}
             blog={blog}>
           </Blogs>)} />
-        <Route path="dashboard" element={
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>
-        } />
-        <Route path="purchase/:toolId" element={
-          <RequireAuth>
-            <Purchase />
-          </RequireAuth>
-        } />
+        <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
+          <Route index element={<DashboardHome></DashboardHome>}></Route>
+          <Route path="profile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="orders" element={<MyOrders></MyOrders>}></Route>
+          {/* <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+          <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+          <Route path="manageUsers" element={<RequireAdmin><ManageUsers></ManageUsers></RequireAdmin>}></Route>
+          <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route> */}
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
       <ToastContainer />
     </div>

@@ -9,7 +9,7 @@ const Tools = ({tool}) => {
     }
     return (
         <div className="card card-compact lg:max-width-lg bg-base-100 shadow-xl shadow-primary">
-            <figure><img src={img} alt="ZSingle Tool" /></figure>
+            <figure><img className='h-24' src={img} alt="ZSingle Tool" /></figure>
             <div className="card-body">
                 <h2 className="card-title justify-center">{toolName}</h2>
                 <p>Minimum Order Quantity: {minimumQuantity}</p>

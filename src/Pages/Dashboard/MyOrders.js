@@ -22,7 +22,7 @@ const MyOrders = () => {
         if (res.status === 401 || res.status === 403) {
             signOut(auth);
             localStorage.removeItem('accessToken');
-            navigate('/');
+            navigate('/login');
         }
         return res.json();
     }))
@@ -65,8 +65,8 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <tr className="hover" key={order._id}>
-                                <th>{index + 1}</th>
+                            orders?.map((order, index) => <tr className="hover" key={order._id}>
+                                <td>{index + 1}</td>
                                 <td>{order.toolName}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.unitPrice}</td>
@@ -81,8 +81,6 @@ const MyOrders = () => {
                                 </td> */}
                             </tr>)
                         }
-
-
                     </tbody>
                 </table>
             </div>

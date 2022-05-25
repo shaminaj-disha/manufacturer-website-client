@@ -12,7 +12,7 @@ const MyReview = () => {
     const [user] = useAuthState(auth);
     // const navigate = useNavigate();
 
-    const imageStorageKey = '1a90af8c2971463116f60acf524cb4f2';
+    const imageStorageKey = process.env.REACT_APP_IMAGE_STORAGE_KEY;
 
     const onSubmit = data => {
         console.log('data', data);

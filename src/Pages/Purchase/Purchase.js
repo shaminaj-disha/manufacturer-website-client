@@ -94,11 +94,13 @@ const Purchase = () => {
         <div className="card lg:card-side bg-base-100 shadow-xl m-28">
             <figure><img className='p-5' src={item?.img} alt="Album" /></figure>
             <div className="card-body">
-                <h2 className="card-title text-3xl font-bold justify-center mb-5">{item?.toolName}</h2>
+                <h3 className="card-title text-xl font-bold justify-center">{item?.toolName}</h3>
                 <p>Available Quantity: {item?.availableQuantity}</p>
                 <p>Minimum Order Quantity: {item?.minimumQuantity}</p>
                 <p>Per Unit Price: {item?.unitPrice}</p>
-                <p>{item?.description}</p>
+                <p className='mb-5'>{item?.description}</p>
+                <h2 className="card-title justify-center">{user?.displayName}</h2>
+                <h2 className="card-title justify-center mb-5">{user?.email}</h2>
                 <h2 className="card-title justify-center my-5">Purchase Details</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
                     <div className="form-control w-full max-w-xs">
@@ -109,13 +111,10 @@ const Purchase = () => {
                             const quantityValue = getValues("quantity"); handleQuantity(quantityValue);
                         }} />
                         <label className="label">
-                            {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
-                        </label>
-                        <label className="label">
                             {errorElement}
                         </label>
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    {/* <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
@@ -126,7 +125,7 @@ const Purchase = () => {
                             <span className="label-text">Email</span>
                         </label>
                         <input type="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs"  {...register("email")} />
-                    </div>
+                    </div> */}
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Phone Number</span>
@@ -135,17 +134,10 @@ const Purchase = () => {
                             required: {
                                 value: true,
                                 message: 'Phone is Required'
-                            },
-                            minLength: {
-                                value: 11,
-                                message: 'Phone number must be of 11 digits or more'
                             }
                         })} />
                         <label className="label">
                             {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
-                        </label>
-                        <label className="label">
-                            {errors.phone?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
                         </label>
                     </div>
                     <div className="form-control w-full max-w-xs">

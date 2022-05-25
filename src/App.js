@@ -18,6 +18,7 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import MyReview from './Pages/Dashboard/MyReview';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
+import AllReviews from './Pages/Reviews/AllReviews';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="tools" element={<ShowTools></ShowTools>} />
+        <Route path="allReviews" element={<AllReviews></AllReviews>} />
         <Route path="purchase/:toolId" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="blogs" element={blogs.map(blog =>

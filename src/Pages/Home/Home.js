@@ -31,7 +31,7 @@ const Home = () => {
     }, []);
 
     const newTools = tools?.slice(-6);
-    const newReviews = reviews?.slice(-6);
+    // const newReviews = reviews?.slice(-6);
     return (
         <div>
             <Banner></Banner>
@@ -51,7 +51,7 @@ const Home = () => {
             </div>
             {isReviewLoading ? (<Loading></Loading>) : (<div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-14 my-24'>
                 {
-                    newReviews?.map(review => <Reviews
+                    reviews?.map(review => <Reviews
                         key={review._id}
                         reviews={review}
                     ></Reviews>)

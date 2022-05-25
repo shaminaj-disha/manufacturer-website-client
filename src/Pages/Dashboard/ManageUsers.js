@@ -1,17 +1,12 @@
 import { TrashIcon } from '@heroicons/react/solid';
-import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import DeleteUserModal from './DeleteUserModal';
-// import ManageUsersRow from './ManageUsersRow';
 
 const ManageUsers = () => {
     const [deletion, setDeletion] = useState(null);
-    const navigate = useNavigate();
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: 'GET',
         headers: {
@@ -33,9 +28,9 @@ const ManageUsers = () => {
             .then(res => {
                 if (res.status === 401 || res.status === 403) {
                     toast.error('Failed to Make an admin');
-                    signOut(auth);
-                    localStorage.removeItem('accessToken');
-                    navigate('/login');
+                    // signOut(auth);
+                    // localStorage.removeItem('accessToken');
+                    // navigate('/login');
                 }
                 return res.json()
             })
@@ -58,7 +53,7 @@ const ManageUsers = () => {
                             <th>Index</th>
                             <th>Email</th>
                             <th>Make Admin</th>
-                            <th>Delete</th>
+                            <th>Delete User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,14 +65,6 @@ const ManageUsers = () => {
                                 <td><label onClick={() => setDeletion(user)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
                             </tr>)
                         }
-                        {/* {
-                            users?.map((user, index) => <ManageUsersRow
-                                key={user._id}
-                                user={user}
-                                index={index}
-                                refetch={refetch}
-                            ></ManageUsersRow>)
-                        } */}
                     </tbody>
                 </table>
             </div>

@@ -5,6 +5,7 @@ import Tools from '../Tools/Tools';
 import Reviews from '../Reviews/Reviews'
 
 import Banner from './Banner';
+import BusinessSummary from './BusinessSummary';
 
 const Home = () => {
     const [tools, setTools] = useState([]);
@@ -57,6 +58,8 @@ const Home = () => {
                     ></Reviews>)
                 }
             </div>)}
+            <h3 className='text-center text-primary text-3xl font-bold uppercase mt-24 mb-16'>Business Summary</h3>
+            <BusinessSummary></BusinessSummary>
             <Footer></Footer>
         </div>
     );

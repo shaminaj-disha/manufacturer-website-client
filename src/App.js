@@ -21,6 +21,7 @@ import AllReviews from './Pages/Reviews/AllReviews';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -51,7 +52,7 @@ function App() {
           <Route path="profile" element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="orders" element={<MyOrders></MyOrders>}></Route>
-          {/* <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route> */}
+          <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
           <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
           <Route path="manageUsers" element={<RequireAdmin><ManageUsers></ManageUsers></RequireAdmin>}></Route>
           {/* <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route> */}

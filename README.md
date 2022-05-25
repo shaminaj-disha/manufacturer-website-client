@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Tools Manufacturer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Live Website Link](https://manufacturer-website-c08b3.firebaseapp.com/)
+[https://manufacturer-website-c08b3.firebaseapp.com/](https://manufacturer-website-c08b3.firebaseapp.com/)
 
-## Available Scripts
+--------------
+### Features and Functionality
+* There is a navigation bar which navigates to different routes such as Home, Tools, Reviews, Blogs, Profile, Login and Dashboard when signed in
 
-In the project directory, you can run:
+* In Home, there are seven sections. First one is a banner, second on is Tools which shows last six items from `MongoDB`, third one is Reviews, the next one is Business Summary, two other extra sections and Footer
 
-### `npm start`
+* For Tools, there is a Purchase button which will route to Purchase/:id which is a private route. There, user can place a purchase order
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* In Dashboard, There are some nested routes. Some routes are available for users and some are available for admins
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Both User and Admin can see their profile
 
-### `npm test`
+* Users can see their own orders, cancel them or go for a payment option. Also, they can add reviews
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Admin can make other users admin, can manage orders and manage products. They can also add a product which is shown both in the Home and Tools page
 
-### `npm run build`
+* In Blogs, Six questions are answered from `MondoDB`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* In Profile, some information about the website creator is added
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* If random path names are given which does not match any route, then it will route to Not Found page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+--------------
+### Technologies (Frameworks, Libraries)
+* HTML, CSS, Javascript, React, Express JS
+* React Router Dom
+* Firebase Authentication
+* React Firebase Hooks
+* React Hook Form
+* React Query
+* Tailwind CSS
+* MongoDB
+* Axios
+* JWT
+* React Toastify
+* Heroicons, React Font Awesome
+* Hosted Images in ImageBB
+* Payment Gateway
+* Heroku Server

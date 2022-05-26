@@ -6,6 +6,8 @@ import Reviews from '../Reviews/Reviews'
 
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
+import Contact from './Contact';
+import Conclusion from './Conclusion';
 
 const Home = () => {
     const [tools, setTools] = useState([]);
@@ -37,7 +39,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <div className='my-15'>
-                <h3 className='text-center text-primary text-3xl font-bold uppercase mt-24'>Our Tools</h3>
+                <h3 className='text-center text-primary text-3xl font-bold uppercase mt-8'>Our Tools</h3>
             </div>
             {isLoading ? (<Loading></Loading>) : (<div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-14 my-24'>
                 {
@@ -60,6 +62,8 @@ const Home = () => {
             </div>)}
             <h3 className='text-center text-primary text-3xl font-bold uppercase mt-24 mb-16'>Business Summary</h3>
             <BusinessSummary></BusinessSummary>
+            <Contact></Contact>
+            <Conclusion></Conclusion>
             <Footer></Footer>
         </div>
     );

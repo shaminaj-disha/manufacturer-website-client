@@ -81,7 +81,7 @@ const MyProfile = () => {
                             <label className="label">
                                 <span className="label-text">Location</span>
                             </label>
-                            <textarea type="text" placeholder="Location" className="input input-bordered w-full max-w-xs"  {...register("address", {
+                            <textarea type="text" placeholder="Location" className="textarea input-bordered w-full max-w-xs"  {...register("address", {
                                 required: {
                                     value: true,
                                     message: 'Address is Required'

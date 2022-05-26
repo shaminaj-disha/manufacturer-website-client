@@ -14,7 +14,7 @@ const MyOrders = () => {
     const [deletion, setDeletion] = useState(null);
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -59,6 +59,7 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Per Unit Price</th>
                             <th>Total Price</th>
+                            {/* <th>Payment</th> */}
                             <th>Cancel</th>
                             {/* <th>Payment</th> */}
                         </tr>
@@ -67,11 +68,15 @@ const MyOrders = () => {
                         {
                             orders?.map((order, index) => <tr className="hover" key={order._id}>
                                 <td>{index + 1}</td>
-                                <td>{order.toolName}</td>
-                                <td>{order.quantity}</td>
-                                <td>{order.unitPrice}</td>
-                                <td>{order.totalPrice}</td>
-                                <td><label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{width: "20px"}}></TrashIcon></label></td>
+                                <td>{order?.toolName}</td>
+                                <td>{order?.quantity}</td>
+                                <td>{order?.unitPrice}</td>
+                                <td>{order?.totalPrice}</td>
+                                {/* {(!order?.paid) && <div>
+                                    <p><span className='text-success'>Paid</span></p>
+                                    <p>Transaction id: <span className='text-success'>{order?.transactionId}</span></p>
+                                </div>} */}
+                                <td><label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
                                 {/* <td>
                                     {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
                                     {(order.price && order.paid) && <div>

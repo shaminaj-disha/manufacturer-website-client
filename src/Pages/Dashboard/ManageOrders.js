@@ -49,11 +49,11 @@ const ManageOrders = () => {
                         {
                             orders?.map((order, index) => <tr className="hover" key={order._id}>
                                 <td>{index + 1}</td>
-                                <td>{order.email}</td>
-                                <td>{order.toolName}</td>
-                                <td>{order.quantity}</td>
-                                <td>{order.unitPrice}</td>
-                                <td>{order.totalPrice}</td>
+                                <td>{order?.email}</td>
+                                <td>{order?.toolName}</td>
+                                <td>{order?.quantity}</td>
+                                <td>{order?.unitPrice}</td>
+                                <td>{order?.totalPrice}</td>
                                 <td><label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
                                 {/* <td>
                                     {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}

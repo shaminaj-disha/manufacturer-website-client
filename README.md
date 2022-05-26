@@ -7,7 +7,7 @@
 ### Features and Functionality
 * There is a navigation bar which navigates to different routes such as Home, Tools, Reviews, Blogs, Profile, Login and Dashboard when signed in
 
-* In Home, there are seven sections. First one is a banner, second on is Tools which shows last six items from `MongoDB`, third one is Reviews, the next one is Business Summary, two other extra sections and Footer
+* In Home, there are eight sections. First one is a navbar, then a banner, third on is Tools which shows last six items from `MongoDB`, fourth one is Reviews, the next one is Business Summary, two other extra sections and Footer
 
 * For Tools, there is a Purchase button which will route to Purchase/:id which is a private route. There, user can place a purchase order
 

@@ -22,6 +22,8 @@ import ManageUsers from './Pages/Dashboard/ManageUsers';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
+import DashboardHome from './Pages/Dashboard/DashboardHome';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -48,14 +50,14 @@ function App() {
             blog={blog}>
           </Blogs>)} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
-          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route index element={<DashboardHome></DashboardHome>}></Route>
           <Route path="profile" element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="orders" element={<MyOrders></MyOrders>}></Route>
           <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
           <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
           <Route path="manageUsers" element={<RequireAdmin><ManageUsers></ManageUsers></RequireAdmin>}></Route>
-          {/* <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route> */}
+          <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

@@ -154,7 +154,7 @@ const MyReview = () => {
                             <label className="label">
                                 <span className="label-text">Review</span>
                             </label>
-                            <textarea type="text" placeholder="Your Review" className="input input-bordered w-full max-w-xs"  {...register("review", {
+                            <textarea type="text" placeholder="Your Review" className="textarea input-bordered w-full max-w-xs"  {...register("review", {
                                 required: {
                                     value: true,
                                     message: 'Review is Required'

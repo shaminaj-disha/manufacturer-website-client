@@ -49,7 +49,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h2 className='text-xl my-4'>{user?.displayName}'s Orders: {orders.length}</h2>
+            <h2 className='text-xl my-4'>{user?.displayName}'s Orders: {orders?.length}</h2>
             <div className="overflow-x-auto m-4">
                 <table className="table w-full">
                     <thead>

@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import gear from '../../images/tools/gear.png';
 
 const Header = () => {
     const [user] = useAuthState(auth);
@@ -32,6 +33,11 @@ const Header = () => {
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuItems}
                     </ul>
+                </div>
+                <div class="flex-none">
+                    <button class="btn btn-square btn-ghost">
+                        <img src={gear} alt="" srcset="" />
+                    </button>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Tools Manufacturer</Link>
             </div>

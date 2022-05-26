@@ -45,7 +45,7 @@ const ManageUsers = () => {
 
     return (
         <div>
-            <h2 className="text-2xl my-4">All Users: {users.length}</h2>
+            <h2 className="text-2xl my-4">All Users: {users?.length}</h2>
             <div className="overflow-x-auto mx-4">
                 <table className="table w-full">
                     <thead>

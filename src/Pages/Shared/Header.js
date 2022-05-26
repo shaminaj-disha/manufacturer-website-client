@@ -34,9 +34,9 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <div class="flex-none">
-                    <button class="btn btn-square btn-ghost">
-                        <img src={gear} alt="" srcset="" />
+                <div className="flex-none">
+                    <button className="btn btn-square btn-ghost">
+                        <img src={gear} alt="" srcSet="" />
                     </button>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Tools Manufacturer</Link>

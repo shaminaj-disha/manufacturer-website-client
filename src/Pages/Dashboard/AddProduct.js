@@ -36,7 +36,7 @@ const AddProduct = () => {
                     }
                     console.log(tool);
 
-                    const toolUrl = `http://localhost:5000/tools`;
+                    const toolUrl = `https://whispering-plains-91117.herokuapp.com/tools`;
 
                     const toolData = axios.post(toolUrl, tool);
                     console.log(toolData);

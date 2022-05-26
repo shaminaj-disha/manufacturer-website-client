@@ -39,7 +39,7 @@ const MyReview = () => {
                     console.log(review);
                     // send to your database
 
-                    // fetch('http://localhost:5000/review', {
+                    // fetch('https://whispering-plains-91117.herokuapp.com/review', {
                     //     method: 'POST',
                     //     body: JSON.stringify(review)
                     // })
@@ -54,7 +54,7 @@ const MyReview = () => {
                     //         }
                     //     });
 
-                    const reviewUrl = `http://localhost:5000/review`;
+                    const reviewUrl = `https://whispering-plains-91117.herokuapp.com/review`;
                     // try {
                         const reviewData = axios.post(reviewUrl, review);
                         console.log(reviewData);
@@ -74,7 +74,7 @@ const MyReview = () => {
                     //     }
                     // }
 
-                    // fetch('http://localhost:5000/review', {
+                    // fetch('https://whispering-plains-91117.herokuapp.com/review', {
                     //     method: 'POST',
                     //     body: JSON.stringify(review)
                     // })
@@ -93,7 +93,7 @@ const MyReview = () => {
 
             })
         // console.log(data);
-        // const url = `http://localhost:5000/reviews`;
+        // const url = `https://whispering-plains-91117.herokuapp.com/reviews`;
         // fetch(url, {
         //     method: 'POST',
         //     headers: {

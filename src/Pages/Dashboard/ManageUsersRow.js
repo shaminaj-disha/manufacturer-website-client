@@ -13,7 +13,7 @@ const ManageUsersRow = ({ user, refetch, index }) => {
 
     const makeAdmin = () => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://whispering-plains-91117.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const ManageUsersRow = ({ user, refetch, index }) => {
             <td>{index + 1}</td>
             <td>{email}</td>
             <td>{role !== 'admin' && <button onClick={makeAdmin} className="btn btn-xs">Make Admin</button>}</td>
-            <td><label onClick={() => setDeletion(user)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
+            <td><label onClick={() => setDeletion(user)} htmlFor="user-delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
             {deletion && <DeleteUserModal
                 deletion={deletion}
                 refetch={refetch}

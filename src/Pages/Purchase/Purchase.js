@@ -21,7 +21,7 @@ const Purchase = () => {
 
     useEffect(() => {
         const getTool = async () => {
-            const url = `http://localhost:5000/tools/${toolId}`;
+            const url = `https://whispering-plains-91117.herokuapp.com/tools/${toolId}`;
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -70,7 +70,7 @@ const Purchase = () => {
             address: data.address
         }
 
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://whispering-plains-91117.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

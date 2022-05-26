@@ -10,7 +10,7 @@ import DeleteProductModal from './DeleteProductModal';
 const ManageProducts = () => {
     const [deletion, setDeletion] = useState(null);
     const navigate = useNavigate()
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch(`http://localhost:5000/tools`, {
+    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch(`https://whispering-plains-91117.herokuapp.com/tools`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -53,7 +53,7 @@ const ManageProducts = () => {
                                 <td>{tool?.unitPrice}</td>
                                 <td>{tool?.minimumQuantity}</td>
                                 <td>{tool?.availableQuantity}</td>
-                                <td><label onClick={() => setDeletion(tool)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
+                                <td><label onClick={() => setDeletion(tool)} htmlFor="manage-delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
                             </tr>)
                         }
                     </tbody>

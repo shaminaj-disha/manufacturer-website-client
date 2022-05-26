@@ -7,7 +7,7 @@ import DeleteUserModal from './DeleteUserModal';
 
 const ManageUsers = () => {
     const [deletion, setDeletion] = useState(null);
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://whispering-plains-91117.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +19,7 @@ const ManageUsers = () => {
 
     const makeAdmin = (email) => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://whispering-plains-91117.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -62,7 +62,7 @@ const ManageUsers = () => {
                                 <td>{index + 1}</td>
                                 <td>{user?.email}</td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => makeAdmin(user?.email)} className="btn btn-xs">Make Admin</button>}</td>
-                                <td><label onClick={() => setDeletion(user)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
+                                <td><label onClick={() => setDeletion(user)} htmlFor="user-delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
                             </tr>)
                         }
                     </tbody>

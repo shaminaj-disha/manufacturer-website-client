@@ -7,7 +7,7 @@ const AllReviews = () => {
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://whispering-plains-91117.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

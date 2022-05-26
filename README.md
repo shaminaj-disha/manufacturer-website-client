@@ -40,5 +40,5 @@
 * React Toastify
 * Heroicons, React Font Awesome
 * Hosted Images in ImageBB
-* Payment Gateway
+* Stripe Payment
 * Heroku Server

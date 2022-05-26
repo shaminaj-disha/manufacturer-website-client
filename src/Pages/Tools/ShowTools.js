@@ -7,7 +7,7 @@ const ShowTools = () => {
     const [isLoading, setLoading] = useState(true);
 
     // const formattedDate = format(date, 'PP');
-    // const { data: items, isLoading, refetch } = useQuery(['tools'], () => fetch('http://localhost:5000/tools')
+    // const { data: items, isLoading, refetch } = useQuery(['tools'], () => fetch('https://whispering-plains-91117.herokuapp.com/tools')
     //     .then(res => res.json()))
 
     // if(isLoading){
@@ -15,7 +15,7 @@ const ShowTools = () => {
     // }
 
     useEffect(() => {
-        fetch('http://localhost:5000/tools')
+        fetch('https://whispering-plains-91117.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => {
                 setItems(data);

@@ -3,15 +3,18 @@ import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import DeleteConfirmModal from './DeleteConfirmModal';
+// import UpdateConfirmModal from './UpdateConfirmModal';
 
 const ManageOrders = () => {
 
     const [deletion, setDeletion] = useState(null);
+    // const [status, setStatus] = useState(null);
     const navigate = useNavigate()
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://whispering-plains-91117.herokuapp.com/purchase`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -28,6 +31,27 @@ const ManageOrders = () => {
         return <Loading></Loading>
     }
 
+    const handleUpdate = (_id, toolName) => {
+        const payment = {
+            order: _id,
+            status: 'shipped',
+        }
+        fetch(`https://whispering-plains-91117.herokuapp.com/status/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(payment)
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success(`Order of ${toolName} is Shipped.`)
+                // setStatus(null);
+                refetch();
+            })
+    }
+
     return (
         <div>
             <h2 className='text-xl my-4'>All Orders: {orders.length}</h2>
@@ -41,6 +65,8 @@ const ManageOrders = () => {
                             <th>Quantity</th>
                             <th>Per Unit Price</th>
                             <th>Total Price</th>
+                            <th>Payment</th>
+                            <th>Status</th>
                             <th>Cancel</th>
                             {/* <th>Payment</th> */}
                         </tr>
@@ -54,7 +80,20 @@ const ManageOrders = () => {
                                 <td>{order?.quantity}</td>
                                 <td>{order?.unitPrice}</td>
                                 <td>{order?.totalPrice}</td>
-                                <td><label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
+                                <td>
+                                    {(!order?.paid) && <p><span className='text-red-500'>Unpaid</span></p>}
+                                    {(order?.paid) && <div>
+                                        <p><span className='text-success'>Paid</span></p>
+                                    </div>}
+                                </td>
+                                <td>
+                                    {/* {(order?.paid && !order?.status) && <label onClick={() => setStatus(order)} htmlFor="update-confirm-modal" className="btn btn-xs btn-ghost"><button className='btn btn-xs bg-red-500'>Pending</button></label>} */}
+                                    {(order?.paid && ((order?.status) === 'pending')) && <button onClick={() => handleUpdate(order?._id, order?.toolName)} className='btn btn-xs bg-red-500'>Pending</button>}
+                                    {(order?.paid && ((order?.status) === 'shipped')) && <div>
+                                        <p><span className='text-success'>Shipped</span></p>
+                                    </div>}
+                                </td>
+                                <td>{(!order?.paid) && <label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label>}</td>
                                 {/* <td>
                                     {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
                                     {(order.price && order.paid) && <div>
@@ -67,6 +106,11 @@ const ManageOrders = () => {
                     </tbody>
                 </table>
             </div>
+            {/* {status && <UpdateConfirmModal
+                status={status}
+                refetch={refetch}
+                setStatus={setStatus}
+            ></UpdateConfirmModal>} */}
             {deletion && <DeleteConfirmModal
                 deletion={deletion}
                 refetch={refetch}

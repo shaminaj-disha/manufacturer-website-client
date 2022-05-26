@@ -23,7 +23,7 @@ const MyProfile = () => {
         }
         console.log(profile);
 
-        const profileData = axios.put(`http://localhost:5000/user/${email}`, profile);
+        const profileData = axios.put(`https://whispering-plains-91117.herokuapp.com/user/${email}`, profile);
         console.log(profileData);
         if (profileData) {
             toast.success('Profile added/ updated successfully');
@@ -33,7 +33,7 @@ const MyProfile = () => {
             toast.error('Profile Failed');
         }
 
-        // fetch(`http://localhost:5000/user/${email}`, {
+        // fetch(`https://whispering-plains-91117.herokuapp.com/user/${email}`, {
         //     method: 'PUT',
         //     headers: {
         //         'content-type': 'application/json',

@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 // import { TrashIcon } from '@heroicons/react/solid';
 import DeleteConfirmModal from './DeleteConfirmModal';
@@ -14,7 +14,7 @@ const MyOrders = () => {
     const [deletion, setDeletion] = useState(null);
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://whispering-plains-91117.herokuapp.com/myOrders?email=${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -34,7 +34,7 @@ const MyOrders = () => {
     // const handleDeleteItem = id => {
     //     const proceed = window.confirm('Are you sure?');
     //     if (proceed) {
-    //         const url = `http://localhost:5000/purchase/${id}`;
+    //         const url = `https://whispering-plains-91117.herokuapp.com/purchase/${id}`;
     //         fetch(url, {
     //             method: 'DELETE'
     //         })
@@ -59,7 +59,7 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Per Unit Price</th>
                             <th>Total Price</th>
-                            {/* <th>Payment</th> */}
+                            <th>Payment</th>
                             <th>Cancel</th>
                             {/* <th>Payment</th> */}
                         </tr>
@@ -72,11 +72,14 @@ const MyOrders = () => {
                                 <td>{order?.quantity}</td>
                                 <td>{order?.unitPrice}</td>
                                 <td>{order?.totalPrice}</td>
-                                {/* {(!order?.paid) && <div>
-                                    <p><span className='text-success'>Paid</span></p>
-                                    <p>Transaction id: <span className='text-success'>{order?.transactionId}</span></p>
-                                </div>} */}
-                                <td><label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label></td>
+                                <td>
+                                    {(!order?.paid) && <Link to={`/dashboard/payment/${order?._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                                    {(order?.paid) && <div>
+                                        <p><span className='text-success'>Paid</span></p>
+                                        <p>Transaction id: <span className='text-success'>{order?.transactionId}</span></p>
+                                    </div>}
+                                </td>
+                                <td>{(!order?.paid) && <label onClick={() => setDeletion(order)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-ghost"><TrashIcon className='text-red-500' style={{ width: "20px" }}></TrashIcon></label>}</td>
                                 {/* <td>
                                     {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
                                     {(order.price && order.paid) && <div>

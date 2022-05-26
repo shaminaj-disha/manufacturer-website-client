@@ -16,7 +16,7 @@ const Home = () => {
     const [isReviewLoading, setReviewLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/tools')
+        fetch('https://whispering-plains-91117.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => {
                 setTools(data);
@@ -25,7 +25,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://whispering-plains-91117.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

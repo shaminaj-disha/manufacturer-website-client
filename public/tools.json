@@ -79,5 +79,14 @@
     "minimumQuantity": 2,
     "availableQuantity": 168,
     "description": "It's a nice Paint Roller.\r\n"
+  },
+  {
+    "_id": "628e35a463537a15373a8131",
+    "img": "https://i.ibb.co/hVTjDky/art-color-palette-with-paintbrush-drawing-tools-98292-5348.webp",
+    "toolName": "Paint Brush",
+    "unitPrice": 100,
+    "minimumQuantity": 5,
+    "availableQuantity": 250,
+    "description": "It's a nice paint brush.\r\n"
   }
 ]

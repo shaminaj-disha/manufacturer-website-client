@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading';
 
 const DashboardHome = () => {
     const [user] = useAuthState(auth);
-    const { data: users, isLoading } = useQuery('users', () => fetch(`http://localhost:5000/profile/${user.email}`, {
+    const { data: users, isLoading } = useQuery('users', () => fetch(`https://whispering-plains-91117.herokuapp.com/profile/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
